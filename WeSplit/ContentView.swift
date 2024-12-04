@@ -17,17 +17,20 @@ struct ContentView: View {
     
     let tipsPercentages = [10,15,20,25,30,0]
 
-    var totalPerSeron: Double {
-        let peopleCount = Double(numberOfPeople + 2)
-        let tipSelection = Double(tipPercentage)
-        
-        let tipValue = checkAmount / 100 * tipSelection
+    var totalPerPerson: Double {
+        let tipValue = checkAmount * Double(tipPercentage) / 100
         let grandTotal = checkAmount + tipValue
-        let amountPerPerson = grandTotal + peopleCount
+        let amountPerPerson = grandTotal / Double(numberOfPeople)
         
         return amountPerPerson
     }
-    
+    var totalAmount: Double {
+        let tipValue = checkAmount * Double(tipPercentage) / 100
+        let grandTotal = checkAmount + tipValue
+        
+        return grandTotal
+    }
+    //    Adicione outra seção mostrando o valor total da conta - ou seja, o valor original mais o valor da gorjeta, sem dividir pelo número de pessoas.
     var body: some View {
         NavigationStack{
             Section{
@@ -50,14 +53,17 @@ struct ContentView: View {
                     }
                     .pickerStyle(.segmented)
                     
-                    Section{
-                        Text(totalPerSeron, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    Section("Amount Per Person"){
+                        Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         
+                    }
+                    
+                    Section("Total Amount"){
+                        Text(totalAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                     }
                     
                 }
                 .foregroundColor(.accentColor)
-                
                 
             }
             .navigationTitle("We Split")
