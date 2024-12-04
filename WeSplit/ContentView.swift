@@ -30,7 +30,7 @@ struct ContentView: View {
         
         return grandTotal
     }
-    //    Adicione outra seção mostrando o valor total da conta - ou seja, o valor original mais o valor da gorjeta, sem dividir pelo número de pessoas.
+    //    Adicione outra seção mostrando o valor total da conta - ou seja, o valor original mais o valor da gorjeta, sem dividir pelo número de pessoas
     var body: some View {
         NavigationStack{
             Section{
