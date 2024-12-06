@@ -59,10 +59,6 @@ struct ContentView: View {
                     }
                     .pickerStyle(.wheel)
                     
-                    
-                    
-                    
-                    
                     Section("Amount Per Person"){
                         Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                         
@@ -75,9 +71,11 @@ struct ContentView: View {
                         Text(totalAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                     }
                     
+                    
+                    
                 }
                 .foregroundColor(.accentColor)
-                
+               
             }
             .navigationTitle("We Split")
             .toolbar {
@@ -85,6 +83,8 @@ struct ContentView: View {
                     Button("Done") {
                         amountIsFocused = false
                     }
+                }
+                Section{Image(systemName: "person.3.sequence.fill")
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
